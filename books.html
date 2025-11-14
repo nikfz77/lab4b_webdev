@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Fetch Test</title>
+</head>
+<body>
+
+<h2>Check Console for Output</h2>
+
+<script>
+fetch("books.json")
+    .then(response => response.json())
+    .then(data => {
+
+        console.log("=== OUTPUT ===");
+
+        // 1. Title of first book
+        console.log("First Book Title:", data[0].title);
+
+        // 2. Author of second book
+        console.log("Second Book Author:", data[1].author);
+
+        // 3. Genres of all books
+        console.log("All Book Genres:");
+        data.forEach((book, i) => {
+            console.log("Book " + (i + 1) + ": " + book.genres.join(", "));
+        });
+
+    })
+    .catch(error => console.log("Error loading JSON:", error));
+</script>
+
+</body>
+</html>
